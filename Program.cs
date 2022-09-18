@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Linq;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Lab1 {
 
     internal class MainClass {
 
         static Boolean programRunning = true;
+        static IList<string> allLinesText = null;
 
         public static void Main(string[] args) {
             while(programRunning) {
                 printMenu();
 
                 string input = Console.ReadLine();
-                Console.WriteLine("Input = " + input);
-
-                switch(input) {
+                
+                switch (input) {
                     case "1":
-                        Console.WriteLine("Selected option 1");
+                        importWords();
                         break;
                     case "2":
                         Console.WriteLine("Selected option 2");
@@ -29,7 +30,9 @@ namespace Lab1 {
                         Console.WriteLine("Selected option 4");
                         break;
                     case "5":
-                        Console.WriteLine("Selected option 5");
+                        if (!checkIfNull()) {
+                            showFirst10Lines();
+                        }
                         break;
                     case "6":
                         Console.WriteLine("Selected option 6");
@@ -57,6 +60,31 @@ namespace Lab1 {
             
 
 
+        }
+
+        public static void importWords() {
+            IList<string> temp = File.ReadAllLines("/Users/adamdicioccio/Projects/Lab1/Lab1/Words.txt").ToList();
+            allLinesText = temp;
+            Console.WriteLine("Successfully uploaded words. The total number of words are " + allLinesText.Count);
+        }
+
+        public static void showFirst10Lines() {
+            if (allLinesText == null) {
+                Console.WriteLine("Please upload words in 'Words.txt' before continuing...");
+            }
+
+            for (int i = 0; i < 10; i++) {
+                Console.WriteLine(allLinesText[i]);
+            }
+        }
+
+        public static Boolean checkIfNull() {
+            if (allLinesText == null) {
+                Console.WriteLine("Please upload words in 'Words.txt' before continuing...");
+                return true;
+            } else {
+                return false;
+            }
         }
 
         public static void printMenu() {
