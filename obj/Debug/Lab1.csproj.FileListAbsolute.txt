@@ -1,0 +1,6 @@
+/Users/adamdicioccio/Projects/Lab1/Lab1/bin/Debug/Lab1.exe
+/Users/adamdicioccio/Projects/Lab1/Lab1/bin/Debug/Lab1.pdb
+/Users/adamdicioccio/Projects/Lab1/Lab1/obj/Debug/Lab1.csproj.AssemblyReference.cache
+/Users/adamdicioccio/Projects/Lab1/Lab1/obj/Debug/Lab1.csproj.CoreCompileInputs.cache
+/Users/adamdicioccio/Projects/Lab1/Lab1/obj/Debug/Lab1.exe
+/Users/adamdicioccio/Projects/Lab1/Lab1/obj/Debug/Lab1.pdb
