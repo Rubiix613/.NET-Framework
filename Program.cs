@@ -8,7 +8,7 @@ namespace Lab1 {
     internal class MainClass {
 
         static Boolean programRunning = true;
-        static IList<string> allLinesText = null;
+        static IList<string> wordList = null;
 
         public static void Main(string[] args) {
             while(programRunning) {
@@ -35,16 +35,24 @@ namespace Lab1 {
                         }
                         break;
                     case "6":
-                        Console.WriteLine("Selected option 6");
+                        if (!checkIfNull()) {
+                            showStartsWithJ();
+                        }
                         break;
                     case "7":
-                        Console.WriteLine("Selected option 7");
+                        if (!checkIfNull()) {
+                            showEndsWithD();
+                        }
                         break;
                     case "8":
-                        Console.WriteLine("Selected option 8");
+                        if (!checkIfNull()) {
+                            showGreaterThan4();
+                        }
                         break;
                     case "9":
-                        Console.WriteLine("Selected option 9");
+                        if (!checkIfNull()) {
+                            showLessThan3StartsWithA();
+                        }
                         break;
                     case "x":
                         Console.WriteLine("Quitting program...");
@@ -62,24 +70,63 @@ namespace Lab1 {
 
         }
 
+        //public static IList<string> BubbleSort(IList<string> words) {
+        //    return words;
+        //}
+
+        // menu option 1
         public static void importWords() {
-            IList<string> temp = File.ReadAllLines("/Users/adamdicioccio/Projects/Lab1/Lab1/Words.txt").ToList();
-            allLinesText = temp;
-            Console.WriteLine("Successfully uploaded words. The total number of words are " + allLinesText.Count);
+            wordList = File.ReadAllLines("/Users/adamdicioccio/Projects/Lab1/Lab1/Words.txt").ToList();
+            Console.WriteLine("Successfully uploaded words. The total number of words are " + wordList.Count);
         }
 
+        // menu option 5
         public static void showFirst10Lines() {
-            if (allLinesText == null) {
-                Console.WriteLine("Please upload words in 'Words.txt' before continuing...");
-            }
-
-            for (int i = 0; i < 10; i++) {
-                Console.WriteLine(allLinesText[i]);
-            }
+            IEnumerable<string> words = (from word in wordList select word).Take(10);
+            iterateAndPrint(words);
         }
 
+        // menu option 6
+        public static void showStartsWithJ()
+        {
+            IEnumerable<string> words = from word in wordList where word.StartsWith("j") select word;
+            iterateAndPrint(words);
+        }
+
+        // menu option 7
+        public static void showEndsWithD()
+        {
+            IEnumerable<string> words = from word in wordList where word.EndsWith("d") select word;
+            iterateAndPrint(words);
+        }
+
+        // menu option 8
+        public static void showGreaterThan4() {
+            IEnumerable<string> words = from word in wordList where word.Length > 4 select word;
+            iterateAndPrint(words);
+        }
+
+        // menu option 9
+        public static void showLessThan3StartsWithA()
+        {
+            IEnumerable<string> words = from word in wordList where word.Length < 3 && word.StartsWith("a") select word;
+            iterateAndPrint(words);
+        }
+
+        // iterates through IEnumerable<string> that is passed into it, prints output
+        public static void iterateAndPrint(IEnumerable<string> words) {
+            int count = 0;
+            foreach (string word in words)
+            {
+                Console.Write(word + " ");
+                count++;
+            }
+            Console.WriteLine("\nTotal words: " + count);
+        }
+
+        // checks if user initalized list, returns true if list is empty
         public static Boolean checkIfNull() {
-            if (allLinesText == null) {
+            if (wordList == null) {
                 Console.WriteLine("Please upload words in 'Words.txt' before continuing...");
                 return true;
             } else {
@@ -87,6 +134,7 @@ namespace Lab1 {
             }
         }
 
+        // void function that displays menu system
         public static void printMenu() {
             Console.WriteLine("-----------\nPlease enter one of the following options\n" +
                 "1 - Import Words from File\n" +
