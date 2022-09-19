@@ -1,1 +1,1 @@
-This is the readme file added manually into git.
+Program created by Adam Di Cioccio [041019241]

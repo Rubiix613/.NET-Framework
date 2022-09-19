@@ -24,10 +24,14 @@ namespace Lab1 {
                         Console.WriteLine("Selected option 2");
                         break;
                     case "3":
-                        Console.WriteLine("Selected option 3");
+                        if (!checkIfNull()) {
+                            sortWordsUsingLINQ();
+                        }
                         break;
                     case "4":
-                        Console.WriteLine("Selected option 4");
+                        if (!checkIfNull()) {
+                            showDistinctWords();
+                        }
                         break;
                     case "5":
                         if (!checkIfNull()) {
@@ -66,18 +70,28 @@ namespace Lab1 {
                 
             }
             
+        }
 
-
+        // menu option 1
+        public static void importWords() {
+            wordList = File.ReadAllLines("/Users/adamdicioccio/Projects/Lab1/Lab1/Words.txt").ToList();
+            Console.WriteLine("Successfully uploaded words. The total number of words are " + wordList.Count);
         }
 
         //public static IList<string> BubbleSort(IList<string> words) {
         //    return words;
         //}
 
-        // menu option 1
-        public static void importWords() {
-            wordList = File.ReadAllLines("/Users/adamdicioccio/Projects/Lab1/Lab1/Words.txt").ToList();
-            Console.WriteLine("Successfully uploaded words. The total number of words are " + wordList.Count);
+        // menu option 3
+        public static void sortWordsUsingLINQ() {
+            IEnumerable<string> words = (from word in wordList orderby word[0] select word);
+            iterateAndPrint(words);
+        }
+
+        // menu option 4
+        public static void showDistinctWords() {
+            IEnumerable<string> words = (from word in wordList.Distinct() select word);
+            iterateAndPrint(words);
         }
 
         // menu option 5
