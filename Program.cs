@@ -1,9 +1,13 @@
-﻿using System;
+﻿// Adam Di Cioccio
+// 041019241
+// Lab 01 - .NET Enterprise
+// Amir Afrasiabi Rad
+
+using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
 
 namespace Lab1 {
 
