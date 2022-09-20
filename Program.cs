@@ -2,6 +2,8 @@
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Lab1 {
 
@@ -13,7 +15,6 @@ namespace Lab1 {
         public static void Main(string[] args) {
             while(programRunning) {
                 printMenu();
-
                 string input = Console.ReadLine();
                 
                 switch (input) {
@@ -21,7 +22,16 @@ namespace Lab1 {
                         importWords();
                         break;
                     case "2":
-                        Console.WriteLine("Selected option 2");
+                        if (!checkIfNull()) {
+                            IList<string> wordListCopy = wordList.ToList();
+                            Stopwatch stopwatch = Stopwatch.StartNew();
+                            stopwatch.Start();
+                            iterateAndPrint(BubbleSort(wordListCopy));
+                            stopwatch.Stop();
+                            TimeSpan ts = stopwatch.Elapsed;
+                            string elapsed = String.Format("{0}.{1}", ts.Seconds, ts.Milliseconds / 10);
+                            Console.WriteLine("Execution time: " + elapsed + "s");
+                        }
                         break;
                     case "3":
                         if (!checkIfNull()) {
@@ -78,9 +88,21 @@ namespace Lab1 {
             Console.WriteLine("Successfully uploaded words. The total number of words are " + wordList.Count);
         }
 
-        //public static IList<string> BubbleSort(IList<string> words) {
-        //    return words;
-        //}
+        // menu option 2
+        public static IList<string> BubbleSort(IList<string> words){
+            int length = words.Count;
+            string temp;
+            for (int i = 0; i < length - 1; i++) {
+                for (int j = i + 1; j < length; j++) {
+                    if (words[i].CompareTo(words[j]) > 0) {
+                        temp = words[i];
+                        words[i] = words[j];
+                        words[j] = temp;
+                    }
+                }
+            }
+            return words;
+        }
 
         // menu option 3
         public static void sortWordsUsingLINQ() {
