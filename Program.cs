@@ -127,15 +127,13 @@ namespace Lab1 {
         }
 
         // menu option 6
-        public static void showStartsWithJ()
-        {
+        public static void showStartsWithJ() {
             IEnumerable<string> words = from word in wordList where word.StartsWith("j") select word;
             iterateAndPrint(words);
         }
 
         // menu option 7
-        public static void showEndsWithD()
-        {
+        public static void showEndsWithD() {
             IEnumerable<string> words = from word in wordList where word.EndsWith("d") select word;
             iterateAndPrint(words);
         }
@@ -147,8 +145,7 @@ namespace Lab1 {
         }
 
         // menu option 9
-        public static void showLessThan3StartsWithA()
-        {
+        public static void showLessThan3StartsWithA() {
             IEnumerable<string> words = from word in wordList where word.Length < 3 && word.StartsWith("a") select word;
             iterateAndPrint(words);
         }
@@ -156,8 +153,7 @@ namespace Lab1 {
         // iterates through IEnumerable<string> that is passed into it, prints output
         public static void iterateAndPrint(IEnumerable<string> words) {
             int count = 0;
-            foreach (string word in words)
-            {
+            foreach (string word in words) {
                 Console.Write(word + " ");
                 count++;
             }
@@ -169,9 +165,8 @@ namespace Lab1 {
             if (wordList == null) {
                 Console.WriteLine("Please upload words in 'Words.txt' before continuing...");
                 return true;
-            } else {
-                return false;
             }
+            return false;
         }
 
         // void function that displays menu system
