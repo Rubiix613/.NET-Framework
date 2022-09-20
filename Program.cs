@@ -15,6 +15,7 @@ namespace Lab1 {
 
         static Boolean programRunning = true;
         static IList<string> wordList = null;
+        static string path = "/Users/adamdicioccio/Projects/Lab1/Lab1/Words.txt";
 
         public static void Main(string[] args) {
             while(programRunning) {
@@ -39,7 +40,13 @@ namespace Lab1 {
                         break;
                     case "3":
                         if (!checkIfNull()) {
+                            Stopwatch stopwatch = Stopwatch.StartNew();
+                            stopwatch.Start();
                             sortWordsUsingLINQ();
+                            stopwatch.Stop();
+                            TimeSpan ts = stopwatch.Elapsed;
+                            string elapsed = String.Format("{0}.{1}", ts.Seconds, ts.Milliseconds / 10);
+                            Console.WriteLine("Execution time: " + elapsed + "s");
                         }
                         break;
                     case "4":
@@ -87,9 +94,15 @@ namespace Lab1 {
         }
 
         // menu option 1
-        public static void importWords() {
-            wordList = File.ReadAllLines("/Users/adamdicioccio/Projects/Lab1/Lab1/Words.txt").ToList();
+        public static int importWords() {
+            try {
+            wordList = File.ReadAllLines(path).ToList();
+            } catch (Exception e) {
+                Console.WriteLine("Change file path variable 'path' - " + e.Message);
+                return 1;
+            }
             Console.WriteLine("Successfully uploaded words. The total number of words are " + wordList.Count);
+            return 0;
         }
 
         // menu option 2

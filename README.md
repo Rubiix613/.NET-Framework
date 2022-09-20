@@ -1,2 +1,1 @@
-Lab01 Submission
-Program created by Adam Di Cioccio [041019241]
+Lab01 Submission - Adam Di Cioccio [041019241]
