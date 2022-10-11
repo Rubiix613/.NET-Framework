@@ -12,16 +12,17 @@ namespace Lab3
     {
         public IActionResult Index()
         {
+            //throw new Exception();
             return View();
         }
 
         public IActionResult SongForm() => View();
 
         //[HttpPost]
-        //public IActionResult Sing()
-        //{
-        //    // you will complete this
-        //}
+        public IActionResult Sing()
+        {
+            return View();
+        }
 
         public IActionResult CreatePerson() => View();
 
