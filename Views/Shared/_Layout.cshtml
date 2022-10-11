@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/StyleSheet.css">
+</head>
+
+    <body>
+        <header>
+            <h1>Welcome to Adam Di Cioccio's Azure Website!</h1>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+        <footer>
+            <p><b>Footer!</b></p>
+            <p>The layout is the main layout of what you page will look like where the header and footer in this case is standard.</p>
+            <p>The style sheet can be found under the wwwroot directory and the layout is found in the shared directory as the software will look there second before looking through all.</p>
+        </footer>
+    </body>  
+</html>
+
