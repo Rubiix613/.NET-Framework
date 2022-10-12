@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Lab3
+namespace Lab3.Models
 {
     public class HomeController : Controller
     {
@@ -27,11 +27,11 @@ namespace Lab3
 
         public IActionResult CreatePerson() => View();
 
-        //[HttpPost]
-        //public IActionResult DisplayPerson(Person person)
-        //{
-        //    // you will complete this
-        //}
+        [HttpPost]
+        public IActionResult DisplayPerson(Person person)
+        {
+            return View(person);
+        }
         public IActionResult Error()
         {
             return View();
