@@ -4,10 +4,21 @@
 }
 
 <h2>SongForm</h2>
-<p>
+<form asp-controller="Home" asp-action="Sing" method="post">
+    <table>
+        <tr>
+            <td>Enter the number of bottles between 50 and 100:</td>
+            <td><input type="number" name="num" min="50" max="100"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="Sing!" />
+</form>
+
+
+@*<p>
     Enter the number of bottles between 50 and 100:
-    <input type="text" name="inputBox" />
+    <input type="number" name="number" />
     <button name="btn" onclick="location.href='@Url.Action("Sing", "Home")';return false;">Sing!</button>
-</p>
+</p>*@
 
 

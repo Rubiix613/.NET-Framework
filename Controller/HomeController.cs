@@ -18,9 +18,10 @@ namespace Lab3
 
         public IActionResult SongForm() => View();
 
-        //[HttpPost]
+        [HttpPost]
         public IActionResult Sing()
         {
+            HttpContext.Session.SetString("num", Request.Form["num"]);
             return View();
         }
 

@@ -1,7 +1,40 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http;
+
+@{
     Layout = "_Layout";
     ViewData["Title"] = "Sing";
+    <h2>Sing</h2>
+
+    string num = Context.Session.GetString("num");
+    int numInt = Int32.Parse(num);
+
+    int output = numInt;
+
+    for (int i = 0; i <= numInt; i++)
+    {
+        if (output > 2) {
+            <p>@output green bottles hanging on the wall,<br />
+            @output green bottles hanging on the wall,<br />
+            And if one green bottle should accidentally fall,<br />
+            There'll be @(output-1) green bottles hanging on the wall.<br /></p>
+        } else if (output == 2) {
+            <p>@output green bottles hanging on the wall,<br />
+            @output green bottles hanging on the wall,<br />
+            And if one green bottle should accidentally fall,<br />
+            There'll be @(output-1) green bottle hanging on the wall.<br /></p>
+        } else if (output == 1) {
+            <p>@output green bottle hanging on the wall,<br />
+            @output green bottle hanging on the wall,<br />
+            And if one green bottle should accidentally fall,<br />
+            There'll be no more green bottles hanging on the wall.<br /></p>
+        } else if (output == 0) {
+            <p>There is no green bottles hanging on the wall.</p>
+        }
+
+        output -= 1;
+    }
 }
 
-<h2>Sing</h2>
+
+
 
