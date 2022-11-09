@@ -10,3 +10,11 @@ Lab3/obj/*
 Lab3/obj
 Lab3/Properties/*
 Lab3/Properties
+Lab4/bin/*
+Lab4/bin
+Lab4/obj/*
+Lab4/obj
+Lab4/Properties/*
+Lab4/Properties
+Lab4/appsettings.json
+Lab4/appsettings.Development.json
