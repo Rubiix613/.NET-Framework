@@ -1,4 +1,4 @@
-@model IEnumerable<Assignment2.Models.Client>
+@model Assignment2.Models.ViewModels.BrokeragesViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -13,41 +13,65 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                FirstName
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                LastName
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
+                Birthdate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                Full Name
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Clients) {
+            <tr>
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.LastName
+                </td>
+                <td>
+                    @item.BirthDate
+                </td>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.Id">Subscriptions</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@if (Model.Subscriptions != null)
+{
+    <h3>Client's Subscriptions to Brokers</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Subscriptions)
+            {
+                <tr>
+                    <td>
+                        @item.Broker.Title
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
