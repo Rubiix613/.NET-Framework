@@ -21,9 +21,9 @@ namespace Assignment2.Controllers
         }
 
         // GET: Client
-        public async Task<IActionResult> Index(string? id)
+        public async Task<IActionResult> Index(int? id)
         {
-              var viewModel = new BrokeragesViewModel {
+              var viewModel = new ClientsViewModel {
                 Clients = await _context.Clients
                   .Include(i => i.Subscriptions)
                   .ThenInclude(i => i.Broker)
@@ -34,7 +34,7 @@ namespace Assignment2.Controllers
 
             if (id != null) {
                 ViewData["ClientId"] = id;
-                viewModel.Subscriptions = viewModel.Brokers.Where(
+                viewModel.Subscriptions = viewModel.Clients.Where(
                     x => x.Id == id).Single().Subscriptions;
             }
 
