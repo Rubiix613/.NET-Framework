@@ -43,7 +43,8 @@
                     @item.FullName
                 </td>
                 <td>
-                    <a asp-action="Index" asp-route-id="@item.Id">Subscriptions</a> |
+                    <a asp-action="Index" asp-route-id="@item.Id">Show Subscriptions</a> |
+                    <a asp-action="EditSubs" asp-route-id="@item.Id">Edit Subscriptions</a> |
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>

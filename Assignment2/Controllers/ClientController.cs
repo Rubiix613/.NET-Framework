@@ -41,6 +41,24 @@ namespace Assignment2.Controllers
             return View(viewModel);
         }
 
+        // GET: Client/EditSubs/5
+        public async Task<IActionResult> EditSubs(int? id)
+        {
+            if (id == null || _context.Clients == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.Clients
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return View(client);
+        }
+
         // GET: Client/Details/5
         public async Task<IActionResult> Details(int? id)
         {
