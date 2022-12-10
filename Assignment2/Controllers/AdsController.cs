@@ -15,6 +15,14 @@ namespace Assignment2.Controllers
         {
             return View();
         }
+
+        // GET: /<controller>/
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
+
+    
 }
 
