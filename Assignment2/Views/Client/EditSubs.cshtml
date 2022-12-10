@@ -18,6 +18,14 @@
         </dd>
     </dl>
 </div>
+@*@foreach (var item in Model.Subscriptions)
+    {
+        <tr>
+            <td>
+                @item.Broker.Title
+            </td>
+        </tr>
+    }*@
 
 <div>
     <a asp-action="Index">Back to List</a>
